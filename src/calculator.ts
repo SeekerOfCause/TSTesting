@@ -60,3 +60,66 @@ export function isOperator(input: string): boolean {
     default: return false;
   }
 }
+
+export function performOperation(input: calcVars): number{
+
+  let inputOp = input.operator;
+  let firstNum = input.firstInput;
+  let secondNum = input.secondInput;
+
+  switch(inputOp) {
+    case("+"):
+      //add(firstNum, secondNum);
+      return firstNum + secondNum;
+
+    case("-"):
+      //subtract(firstNum, secondNum);
+      return firstNum - secondNum;
+    
+    case ("/"):
+     // divide(firstNum, secondNum);
+     return firstNum / secondNum;
+
+    case ("*"):
+     // multiply(firstNum, secondNum);
+     return firstNum * secondNum;
+
+    case("^"):
+     // pow(firstNum, secondNum);
+     return Math.pow(firstNum, secondNum);
+
+  }
+
+  return firstNum;
+
+}
+
+export function add(firstNum: number, secondNum: number): number {
+
+  return firstNum + secondNum;
+
+}
+
+export function subtract(firstNum: number, secondNum: number): number {
+
+  return firstNum - secondNum;
+
+}
+
+export function divide(firstNum: number, secondNum: number): number {
+
+  return firstNum / secondNum;
+
+}
+
+export function multiply(firstNum: number, secondNum: number): number {
+
+  return firstNum * secondNum;
+
+}
+
+export function pow(firstNum: number, secondNum: number): number {
+
+  return Math.pow(firstNum, secondNum);
+
+}

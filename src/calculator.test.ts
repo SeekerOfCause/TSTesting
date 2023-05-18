@@ -1,4 +1,4 @@
-import { getInput, splitInput, setInputVars, checkNum, isOperator } from "./calculator";
+import { performOperation, getInput, splitInput, setInputVars, checkNum, isOperator } from "./calculator";
 
 describe("Testing calculator", () => {
     const input: string = "3 + 4";
@@ -36,6 +36,36 @@ describe("Testing calculator", () => {
         expect(isOperator("+")).toBe(true);
         expect(isOperator("4")).toBe(false);
         expect(isOperator("$")).toBe(false);
+    })
+
+    test("Perform addition operation on input", () => {
+        let input = ["3","+","4"];
+        let output: calcVars = setInputVars(input);
+        expect(performOperation(output)).toBe(7);
+    })
+
+    test("Perform subtraction on input", () => {
+        let input = ["3","-","4"];
+        let output: calcVars = setInputVars(input);
+        expect(performOperation(output)).toBe(-1);
+    })
+
+    test("Perform division on input", () => {
+        let input = ["4", "/", "2"];
+        let output: calcVars = setInputVars(input);
+        expect(performOperation(output)).toBe(2);
+    })
+
+    test("Perform multiplication on input", () => {
+        let input = ["2", "*", "2"];
+        let output: calcVars = setInputVars(input);
+        expect(performOperation(output)).toBe(4);
+    })
+
+    test("Perform exp on input", () => {
+        let input = ["3", "^", "2"];
+        let output: calcVars = setInputVars(input);
+        expect(performOperation(output)).toBe(9);
     })
 
 });
