@@ -156,7 +156,6 @@ body {
   position: relative;
   justify-content: center;
   align-content: center;
-  min-height: 100%;
   grid-column-start: 4;
   grid-column-end: 5;
 }
