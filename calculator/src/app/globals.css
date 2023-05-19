@@ -1,11 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;900&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --pad-gradient: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,118 +33,249 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.calcDiv {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  justify-content: center;
-  
+.gridContainer {
+  display: grid;
+  align-content: end;
+  grid-template-rows: 10% 30% 30% 30%;
+  gap: 3px;
+  min-height: 325px;
+  min-width: 250px;
 }
 
-.gridContainer {
-  display: inline-grid;
-  min-height: 65vh;
-  min-width: 40vw;
-  text-align: center;
-  text-justify: center;
-  
+.calcDisp {
+  display: flex;
+  position: relative;
+  align-content: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid rgb(176, 175, 175);
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(214, 214, 214)
+    )
+    rgb(238, 238, 238);
+  box-shadow: 0px 0px 4px rgb(100, 99, 99);
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 0;
+  grid-row-end: 1;
+}
+
+.calcDispText {
+  padding-right: 8px;
+  font-weight: 600;
+  font-size: 25px;
+  font-family: 'Prompt', sans-serif;
+}
+
+.clearAll {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .item1 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  text-align: center;
-  text-justify: center;
-  border-radius: 4px;
-  border: 2px;
-  border-color: black;
-  border-width: 2px;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .item2 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  text-align: center;
-  text-justify: center;
-  border-radius: 4px;
-  border: 2px;
-  border-color: black;
-  border-width: 2px;
-  background-color: grey;
-    
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .item3 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  text-align: center;
-  text-justify: center;
-  border-color: black;
-  border-style: solid;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.divide {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .item4 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  text-align: center;
-  text-justify: center;
-  
-  border: 1px solid black;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .item5 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  text-align: center;
-  text-justify: center;
-  
-  border: 1px solid black;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 .item6 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  background-color: #80cbc4;
-  border: 1px solid black;
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
-}
-.item7 {
-  grid-column-start: 1;
-  grid-column-end: 2;
   grid-row-start: 3;
   grid-row-end: 4;
-  text-align: center;
-  text-justify: center;
+}
+
+.multiply {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.item7 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 5;
 }
 
 .item8 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  text-align: center;
-  text-justify: center;
+  grid-row-start: 4;
+  grid-row-end: 5;
 }
 
 .item9 {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  text-align: center;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.add {
+  display: flex;
+  position: relative;
   justify-content: center;
+  align-content: center;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+
+.zero {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.decimal {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.equal {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.subtract {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+
+.numberPad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 4px;
+  text-shadow: 0px 0px 2px rgb(85, 84, 84);
+  font-size: 50px;
+  min-width: 100%;
+  min-height: 100%;
+  box-shadow: 0px 0px 4px rgb(122, 122, 122);
+  border: 1px solid rgb(201, 194, 194);
+
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-start-rgb))
+    )
+    rgb(var(--background-end-rgb));
 }
