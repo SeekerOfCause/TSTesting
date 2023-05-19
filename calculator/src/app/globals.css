@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@400;900&display=swap");
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -35,10 +36,9 @@ body {
 
 .gridContainer {
   display: grid;
-  align-content: end;
-  grid-template-rows: 10% 30% 30% 30%;
-  gap: 3px;
-  min-height: 325px;
+  grid-template-rows: 12% 22% 22% 22% 22%;
+  gap: 0px;
+  min-height: 375px;
   min-width: 250px;
 }
 
@@ -49,35 +49,79 @@ body {
   justify-content: flex-end;
   align-items: center;
   border: 1px solid rgb(176, 175, 175);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(214, 214, 214)
-    )
+  background: linear-gradient(to bottom, transparent, rgb(214, 214, 214))
     rgb(238, 238, 238);
   box-shadow: 0px 0px 4px rgb(100, 99, 99);
   grid-column-start: 1;
-  grid-column-end: 5;
-  grid-row-start: 0;
-  grid-row-end: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .calcDispText {
   padding-right: 8px;
   font-weight: 600;
   font-size: 25px;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
 }
 
-.clearAll {
+.calcRowOne {
+  display: grid;
+  position: relative;
+  gap: 2px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.calcRowTwo {
+  display: grid;
+  position: relative;
+  gap: 2px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.calcRowThree {
+  display: grid;
+  position: relative;
+  gap: 2px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+.calcRowFour {
+  display: grid;
+  position: relative;
+  gap: 2px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+
+.calcRowFive {
+  display: grid;
+  position: relative;
+  gap: 2px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+
+.blankItems {
   display: flex;
   position: relative;
   justify-content: center;
   align-content: center;
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
 
 .item1 {
@@ -87,8 +131,6 @@ body {
   align-content: center;
   grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
 
 .item2 {
@@ -98,8 +140,6 @@ body {
   align-content: center;
   grid-column-start: 2;
   grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
 
 .item3 {
@@ -109,19 +149,6 @@ body {
   align-content: center;
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
-.divide {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 2;
-  grid-row-end: 3;
 }
 
 .item4 {
@@ -129,134 +156,10 @@ body {
   position: relative;
   justify-content: center;
   align-content: center;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 4;
-}
-
-.item5 {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
-}
-
-.item6 {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 3;
-  grid-row-end: 4;
-}
-
-.multiply {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
+  min-height: 100%;
   grid-column-start: 4;
   grid-column-end: 5;
-  grid-row-start: 3;
-  grid-row-end: 4;
 }
-
-.item7 {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-
-.item8 {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-
-.item9 {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-
-.add {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 4;
-  grid-row-end: 5;
-}
-
-
-.zero {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 5;
-  grid-row-end: 6;
-}
-
-.decimal {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 5;
-  grid-row-end: 6;
-}
-
-.equal {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 5;
-  grid-row-end: 6;
-}
-
-.subtract {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-content: center;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 5;
-  grid-row-end: 6;
-}
-
 
 .numberPad {
   display: flex;
@@ -270,7 +173,27 @@ body {
   min-height: 100%;
   box-shadow: 0px 0px 4px rgb(122, 122, 122);
   border: 1px solid rgb(201, 194, 194);
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-start-rgb))
+    )
+    rgb(var(--background-end-rgb));
+}
 
+.numberPadAC {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 4px;
+  text-shadow: 0px 0px 2px rgb(85, 84, 84);
+  font-size: 40px;
+  min-width: 100%;
+  min-height: 100%;
+  box-shadow: 0px 0px 4px rgb(122, 122, 122);
+  border: 1px solid rgb(201, 194, 194);
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
