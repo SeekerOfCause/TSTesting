@@ -231,6 +231,16 @@ export default function CalculatorPad() {
   async function getResult() {
     inputEntry = performOperation([inputOne, inputOp, inputTwo]);
     let jsonEntry = JSON.stringify(inputEntry);
+    updateHist(inputEntry)
+  }
+
+  async function updateHist(input: any) {
+    return (
+      <div>
+        <p>{input.input}</p>=
+        <p>{input.response}</p>
+      </div>
+    );
   }
 
   async function allClear() {
