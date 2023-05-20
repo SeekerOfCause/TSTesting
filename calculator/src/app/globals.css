@@ -36,10 +36,10 @@ body {
 
 .gridContainer {
   display: grid;
-  grid-template-rows: 12% 22% 22% 22% 22%;
-  gap: 0px;
-  min-height: 375px;
-  min-width: 250px;
+  grid-template-rows: 10% 18% 18% 18% 18% 18%;
+  gap: 2px;
+  min-height: 575px;
+  min-width: 325px;
 }
 
 .calcDisp {
@@ -48,6 +48,7 @@ body {
   align-content: flex-end;
   justify-content: flex-end;
   align-items: center;
+  text-overflow: ellipsis;
   border: 1px solid rgb(176, 175, 175);
   background: linear-gradient(to bottom, transparent, rgb(214, 214, 214))
     rgb(238, 238, 238);
@@ -58,10 +59,25 @@ body {
   grid-row-end: 2;
 }
 
+.history {
+    display: grid;
+    position: relative;
+    gap: 2px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 7;
+}
+
 .calcDispText {
   padding-right: 8px;
   font-weight: 600;
   font-size: 25px;
+  width: 100%;
+  text-align: right;
+  word-wrap: break-word;
+  word-break: break-all;
+  position: absolute;
   font-family: "Prompt", sans-serif;
 }
 
