@@ -1,13 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { performOperation } from "./calculator";
+import DisplayHist, { updateHistory } from "./history"
+
+
+const fs = require('fs');
+
+// users in JSON file for simplicity, store in a db for production applications
+let historyData = require('./history.json');
 
 let inputOneText: string = "";
 let inputTwoText: string = "";
 let inputOperatorText: string = "";
 let inputEntry;
 let inputOneFinal: string = "";
+let ans: string;
+
 
 export default function CalculatorPad() {
   const [inputOne, updateTextOne] = useState(inputOneText);
@@ -15,6 +23,8 @@ export default function CalculatorPad() {
   const [inputOp, updateTextOp] = useState(inputOperatorText);
   const [inputOneTrue, setInputTrue] = useState(false);
   const [displayHist, setHistDisp] = useState(false);
+  const [ansDisplayed, setAnsDisp] = useState(false);
+  const [result, setResult] = useState("");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -27,6 +37,7 @@ export default function CalculatorPad() {
                 {inputOne}
                 {inputOp}
                 {inputTwo}
+                {result}
               </div>
             </div>
             <div className="calcRowOne">
@@ -39,7 +50,7 @@ export default function CalculatorPad() {
                 </button>
               </div>
               <div className="item3">
-                <button className="numberPad">^</button>
+                <button className="numberPad" onClick={() => updateOperator(" ^ ")}>^</button>
               </div>
               <div className="item4">
                 <button
@@ -170,7 +181,7 @@ export default function CalculatorPad() {
                 </button>
               </div>
               <div className="item3">
-                <button className="numberPad">=</button>
+                <button className="numberPad" onClick={() => getResult()}>=</button>
               </div>
               <div className="item4">
                 <button className="numberPad" onClick={() => deleteCalcText()}>
@@ -184,7 +195,7 @@ export default function CalculatorPad() {
                 </button>
               </div>
             </div>
-            <div className="history" style={{display: displayHist ? "block": "none"}}><div className="numberPad">History</div></div>
+            <div className="history" style={{display: displayHist ? "block": "none"}}><div className="numberPad"></div></div>
           </div>
         </div>
       </div>
@@ -202,13 +213,16 @@ export default function CalculatorPad() {
   }
 
   async function updateOperator(input: string) {
-    inputOperatorText += input;
+    inputOperatorText = input;
     updateTextOp(inputOperatorText);
     setInputTrue(true);
   }
 
   async function deleteCalcText() {
     if (!inputOneTrue) {
+      if (inputOneText.length == 0){
+        setResult("");
+      }
       let tempText = inputOneText.substring(0, inputOneText.length - 1);
       inputOneText = tempText;
       tempText = "";
@@ -229,18 +243,29 @@ export default function CalculatorPad() {
   }
 
   async function getResult() {
+    setInputTrue(false);
+    ans  = performOperation([inputOne, inputOp, inputTwo]);
+    allClear();
+    deleteCalcText();
+    updateTextTwo(ans);
+    console.log(ans);
     inputEntry = performOperation([inputOne, inputOp, inputTwo]);
     let jsonEntry = JSON.stringify(inputEntry);
-    updateHist(inputEntry)
+    
+  }
+
+  async function setDisp() {
+    if (Object.keys(historyData).length > 0) {
+      setHistDisp(true);
+    }
+    else if (Object.keys(historyData).length == 0) {
+      setHistDisp(false);
+    }
   }
 
   async function updateHist(input: any) {
-    return (
-      <div>
-        <p>{input.input}</p>=
-        <p>{input.response}</p>
-      </div>
-    );
+    setDisp();
+      //updateHistory(input);
   }
 
   async function allClear() {
@@ -251,4 +276,84 @@ export default function CalculatorPad() {
     updateTextTwo(inputTwoText);
     updateOperator(inputOperatorText);
   }
+}
+
+export function performOperation(input: string[]): string {
+  let ans: number = NaN;
+
+  if (checkNum(input[0]) && checkNum(input[2]) && isOperator(input[1])) {
+    let inputOp = input[1];
+    let firstNum = parseFloat(input[0]);
+    let secondNum = parseFloat(input[2]);
+
+    switch (inputOp) {
+      case "+":
+        //add(firstNum, secondNum);
+        ans = firstNum + secondNum;
+
+      case "-":
+        //subtract(firstNum, secondNum);
+        ans = firstNum - secondNum;
+
+      case "/":
+        // divide(firstNum, secondNum);
+        ans = firstNum / secondNum;
+
+      case "*":
+        // multiply(firstNum, secondNum);
+        ans = firstNum * secondNum;
+
+      case "^":
+        // pow(firstNum, secondNum);
+        ans = Math.pow(firstNum, secondNum);
+    }
+    return ans.toString(10);
+  }
+  return "";
+}
+
+export function checkNum(input: string): boolean {
+  let isNum: boolean;
+
+  if (!isNaN(parseFloat(input))) {
+    isNum = true;
+  } else {
+    isNum = false;
+  }
+
+  return isNum;
+}
+
+export function isOperator(input: string): boolean {
+  switch (input) {
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "^":
+      return true;
+
+    default:
+      return false;
+  }
+}
+
+export function add(firstNum: number, secondNum: number): number {
+  return firstNum + secondNum;
+}
+
+export function subtract(firstNum: number, secondNum: number): number {
+  return firstNum - secondNum;
+}
+
+export function divide(firstNum: number, secondNum: number): number {
+  return firstNum / secondNum;
+}
+
+export function multiply(firstNum: number, secondNum: number): number {
+  return firstNum * secondNum;
+}
+
+export function pow(firstNum: number, secondNum: number): number {
+  return Math.pow(firstNum, secondNum);
 }

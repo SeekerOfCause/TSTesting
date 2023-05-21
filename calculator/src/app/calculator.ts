@@ -19,7 +19,7 @@ export function splitInput(input: string): string[] {
   return splitIn;
 }
 
-export function performOperation(input: string[]) {
+export function performOperation(input: string[]): string {
   let ans: number = NaN;
 
   if (checkNum(input[0]) && checkNum(input[2]) && isOperator(input[1])) {
@@ -48,8 +48,9 @@ export function performOperation(input: string[]) {
         // pow(firstNum, secondNum);
         ans = Math.pow(firstNum, secondNum);
     }
-    return { input: { input }, response: { ans } };
+    return ans.toString(10);
   }
+  return "";
 }
 
 export function checkNum(input: string): boolean {
